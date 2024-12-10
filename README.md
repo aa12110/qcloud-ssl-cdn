@@ -40,25 +40,6 @@ docker run -d \
   ghcr.io/zfb132/qcloud-ssl-cdn:main
 ```
 
-
-不启用HTTP2
-
-```bash
-docker run -d \
-  --name qcloud-ssl-cdn \
-  --restart=unless-stopped \ 
-  -e DP_Id=xxx \
-  -e DP_Key=xxx \ 
-  -e ACME_DNS_TYPE=dns_dp \ 
-  -e ACME_DOMAIN=whuzfb.cn \
-  -e SECRETID=xxx \
-  -e SECRETKEY=xxx \
-  -e CDN_DOMAIN=www.whuzfb.cn \
-  -e RUN_NOW=true \
-  -e ENABLE_HTTP2=false \  # 不启用HTTP2
-  ghcr.io/zfb132/qcloud-ssl-cdn:main
-
-```
 #### 其他变量
 
 * `ACME_ENABLED`: 是否启用 acme，不启用将证书映射到容器`/data/certs`目录
@@ -73,7 +54,7 @@ docker run -d \
 * `DELETE_OLD_CERTS`: 是否删除适用于CDN_DOMAIN域名下的其他所有证书，默认为`true`
 * `UPDATE_SSL`: 是否进行为CDN_DOMAIN更换SSL证书的操作，默认为`true`
 * `PUSH_URLS`: 是否进行预热URL的操作，默认为`true`
-* `是否进行刷新URL的操作`: 是否进行刷新URL的操作，默认为`true`
+* `PURGE_URL`: 是否进行刷新URL的操作，默认为`true`
 
 
 
